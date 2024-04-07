@@ -42,4 +42,13 @@ spec:
   type: LoadBalancer
   selector:
     app: react-app
+##config...
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: react-config
+  labels: 
+    app: react-app
+  
 
