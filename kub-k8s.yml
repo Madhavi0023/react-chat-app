@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - name: react-app-container
+        image:  047619944584.dkr.ecr.us-west-2.amazonaws.com/react-app-demo:latest
+        ports:
+        - containerPort: 3000 
+#service
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+spec:
+  selector:
+    app: react-app  # Match the labels of your deployment pods
+  ports:
+    - protocol: TCP
+      port: 80  # The port the service will listen on
+      targetPort: 3000  # The port your React app is running on in the pods
+  type: LoadBalancer
