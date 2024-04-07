@@ -23,89 +23,9 @@ spec:
           name: http
           protocol: TCP
           
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: react-app
-  name: react-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: react-app
-  template:
-    metadata:
-      labels:
-        app: react-app
-    spec:
-      containers:
-      - name: my-reactchat-app
-        image: 047619944584.dkr.ecr.us-west-2.amazonaws.com/react-app-demo
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
-          name: http
-          protocol: TCP
+
 # service type loadbalancer       
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: react-app
-  name: react-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: react-app
-  template:
-    metadata:
-      labels:
-        app: react-app
-    spec:
-      containers:
-      - name: my-reactchat-app
-        image: 047619944584.dkr.ecr.us-west-2.amazonaws.com/react-app-demo
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
-          name: http
-          protocol: TCP
-# service type loadbalancer       
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: react-app
-    k8s-app: react-app
-  name: react-app
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8085
-  type: LoadBalancer
-  selector:
-    app: react-app
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: react-app
-    k8s-app: react-app
-  name: react-app
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8085
-  type: LoadBalancer
-  selector:
-    app: react-app
 apiVersion: v1
 kind: Service
 metadata:
@@ -122,3 +42,4 @@ spec:
   type: LoadBalancer
   selector:
     app: react-app
+
