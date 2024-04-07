@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: react-app
+   app: react-app
   name: react-app
 spec:
   replicas: 2
@@ -20,8 +20,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
-          name: http
-          protocol: TCP
+        
           
 
 # service type loadbalancer       
@@ -31,8 +30,7 @@ kind: Service
 metadata:
   labels:
     app: react-app
-    k8s-app: react-app
-  name: react-app
+  name: react-svc
 spec:
   ports:
   - name: http
@@ -42,13 +40,5 @@ spec:
   type: LoadBalancer
   selector:
     app: react-app
-##config...
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: react-config
-  labels: 
-    app: react-app
-  
+
 
