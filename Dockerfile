@@ -5,11 +5,13 @@ FROM node:12.2.0-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY  . .
+COPY  package*.json ./
 
 # Install dependencies
 RUN npm install
 
+# Copy the rest of the application code
+COPY . .
 # Expose the port on which your Express server will run (if needed)
 EXPOSE 3000
 
