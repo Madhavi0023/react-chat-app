@@ -25,9 +25,9 @@ metadata:
 spec:
   selector:
     app: react-app  # Match the labels of your deployment pods
-  ports:
-    - protocol: TCP
+  type: NodePort
+    ports:
       port: 80  # The port the service will listen on
       targetPort: 3000 
       nodePort: 30007 # The port your React app is running on in the pods
-  type: NodePort
+ 
