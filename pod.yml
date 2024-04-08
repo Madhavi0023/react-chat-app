@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: react-app
+spec:
+  containers:
+      - name: my-reactchat-app
+        image: 047619944584.dkr.ecr.us-west-2.amazonaws.com/react-app-demo
+        ports:
+         -containerPort: 3000
