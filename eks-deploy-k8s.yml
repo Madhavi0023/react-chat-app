@@ -20,6 +20,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        name: http
+          protocol: TCP
         
           
 
@@ -30,6 +32,7 @@ kind: Service
 metadata:
   labels:
     app: react-app
+    k8s-app: react-app
   name: react-svc
 spec:
   ports:
